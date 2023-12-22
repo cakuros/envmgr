@@ -1,0 +1,22 @@
+
+apiVersion: eaas.envmgmt.io/v1
+kind: ResourceTemplate
+metadata:
+  description: 'Rafay Blueprints Resource Template '
+  name: rafay-blueprint-rs-tmpl-test-proj-cakuros
+  project: test-proj-cakuros
+spec:
+  agents:
+  - name: eaas-agent-test-proj-cakuros
+  contexts:
+  - name: rafay-test-proj-cakuros
+  provider: terraform
+  providerOptions:
+    terraform:
+      useSystemStateStore: true
+      version: 1.4.6
+  repositoryOptions:
+    branch: main
+    directoryPath: terraform/aws/101-caas-eks/terraform/blueprints
+    name: eaas-repo-test-proj-cakuros
+  version: v1

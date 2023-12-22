@@ -1,0 +1,29 @@
+
+apiVersion: eaas.envmgmt.io/v1
+kind: ResourceTemplate
+metadata:
+  name: rafay-namespace-rs-tmpl-test-proj-cakuros
+  project: test-proj-cakuros
+spec:
+  agents:
+  - name: eaas-agent-test-proj-cakuros
+  contexts:
+  - name: rafay-test-proj-cakuros
+  provider: terraform
+  providerOptions:
+    terraform:
+      useSystemStateStore: true
+      version: 1.4.6
+  repositoryOptions:
+    branch: main
+    directoryPath: terraform/aws/101-caas-eks/terraform/namespace
+    name: eaas-repo-test-proj-cakuros
+  variables:
+  - name: namespaces
+    options:
+      override:
+        type: notallowed
+      required: true
+    value: '["ingress-nginx", "cert-manager"]'
+    valueType: hcl
+  version: v1
